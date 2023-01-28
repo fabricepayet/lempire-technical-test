@@ -1,22 +1,20 @@
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import { Exports } from '../imports/api/export/collection';
 
 import './main.html';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+Template.export.onCreated(() => {
+  Meteor.subscribe('exports')
+})
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
+Template.export.events({
+  'click .button': () => {
+    Meteor.call('export.create')
   },
 });
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+Template.export.helpers({
+  exports: () => {
+    return Exports.find()
+  }
 });
