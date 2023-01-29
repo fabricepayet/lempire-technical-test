@@ -21,6 +21,11 @@ En utilisant Meteor.js avec Blaze comme framework front, réalise une liste d'ex
 ## Installation & lancement
 
 ```
-npm install
+meteor npm install
 meteor
 ```
+
+## Demo
+
+[Video](https://www.loom.com/share/813435c13808442395c34a64aa2f12cd)
+
